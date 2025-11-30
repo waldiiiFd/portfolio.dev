@@ -1,0 +1,144 @@
+---
+const navItems = [
+  {
+    title: "Home",
+    label: "home",
+    url: "/",
+  },
+  {
+    title: "Experience",
+    label: "experience",
+    url: "/#experience",
+  },
+  {
+    title: "Projects",
+    label: "projects",
+    url: "/#projects",
+  },
+  {
+    title: "About me",
+    label: "about-me",
+    url: "/#about-me",
+  },
+  {
+    title: "Contact",
+    label: "contact",
+    url: "/#contact",
+  },
+]
+---
+
+<!-- Mobile/Side Navigation -->
+<nav id="main-nav">
+  <div class="widget">
+    <p>Blend elementum consequat lacus, sit amet pulvinar urna hendrerit sit amet. Sed aliquam eu ante a ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+    <p>Massa turpis ornare nec commodo non, auctor vel cursus vestibulum varius hendrerit turpis quiseam cursus.</p>
+  </div>
+  <div class="social-nav-block">
+    <a href="#" class="twitter-alt"><i class="icon-twitter"></i></a>
+    <a href="#" class="facebook-alt"><i class="icon-facebook"></i></a>
+    <a href="#" class="google-alt"><i class="icon-gplus"></i></a>
+    <a href="#" class="linkedin-alt"><i class="icon-linkedin"></i></a>
+    <a href="#" class="pinterest-alt"><i class="icon-pinterest"></i></a>
+    <a href="#" class="dribbble-alt"><i class="icon-dribbble"></i></a>
+  </div>
+</nav>
+
+<!-- Main Header -->
+<div class="header-nav basic set yamm nobg">
+  <div class="container">
+    <div class="basic-wrapper">
+      <a class="btn mobile-menu right" data-toggle="collapse" data-target=".navbar-collapse">
+        <i class="icon-menu-1"></i>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse right">
+      <!-- Navigation -->
+      <ul class="nav navbar-nav">
+        {navItems.map((link) => (
+          <li>
+            <a
+              href={link.url}
+              class="white"
+              aria-label={link.label}
+            >
+              {link.title}
+            </a>
+          </li>
+        ))}
+        <li>
+          <ul class="social-top">
+          </ul>
+        </li>
+      </ul>
+      <!-- /navigation -->
+    </div>
+  </div>
+</div>
+
+<!-- Search Overlay -->
+<div class="overlay overlay-slidedown">
+  <button type="button" class="overlay-close">Close</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12" style="margin-top:30%;">
+        <!-- <form action="/search" class="center-block" id="header-search-form" method="get">
+          <input
+            type="text"
+            id="header-search"
+            name="s"
+            value="Start Typing..."
+            style="height:150px;"
+            autocomplete="off"
+            onfocus="if (this.value == 'Start Typing...') this.value = '';"
+            onblur="if (this.value == '') this.value = 'Start Typing...';"
+          />
+        </form> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section")
+    const navItems = document.querySelectorAll(".header-nav nav a")
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("active")
+            } else {
+              item.classList.remove("active")
+            }
+          })
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    })
+
+    sections.forEach((section) => {
+      observer.observe(section)
+    })
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect()
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section)
+        })
+      }
+    }
+  })
+</script>
+
