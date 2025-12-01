@@ -1,5 +1,5 @@
 ---
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 
 const contactInfo = [
   {
@@ -22,32 +22,33 @@ const contactInfo = [
     label: "Timing",
     value: "MN-FR 9:00 - 18:00",
   },
-]
+];
 
 const socialLinks = [
-  { name: "Twitter", icon: "icon-twitter", url: "#", class: "twitter-alt" },
-  { name: "Facebook", icon: "icon-facebook", url: "#", class: "facebook-alt" },
-  { name: "Google Plus", icon: "icon-gplus", url: "#", class: "google-alt" },
-  { name: "LinkedIn", icon: "icon-linkedin", url: "#", class: "linkedin-alt" },
-  { name: "Dribbble", icon: "icon-dribbble", url: "#", class: "dribbble-alt" },
-]
+  { name: "Twitter", icon: "icon-twitter", url: "https://x.com/waldiii_?s=08 ", class: "twitter-alt" },
+  { name: "Facebook", icon: "icon-facebook", url: "https://www.facebook.com/waldo.fernandez.773/", class: "facebook-alt" },
+  { name: "LinkedIn", icon: "icon-linkedin", url: "www.linkedin.com/in/waldo-fernández-fariñas-3bbb1836a", class: "linkedin-alt" },
+  { name: "GitHub", icon: "icon-github", url: "https://github.com/waldiiiFd", class: "github-alt" },
+];
 ---
 
 <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="row">
-      {contactInfo.map((info) => (
-        <div class="col-md-3">
-          <div class="services-box-3">
-            <i class={info.icon}></i>
-            <div class="content">
-              <p>{info.label}</p>
-              <h3>{info.value}</h3>
+      {
+        contactInfo.map((info) => (
+          <div class="col-md-3">
+            <div class="services-box-3">
+              <i class={info.icon} />
+              <div class="content">
+                <p>{info.label}</p>
+                <h3>{info.value}</h3>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </footer>
@@ -61,19 +62,21 @@ const socialLinks = [
     <div class="col-md-6 text-right">
       <div class="social-icons">
         <ul>
-          {socialLinks.map((social) => (
-            <li>
-              <a
-                href={social.url}
-                class={social.class}
-                title={social.name}
-                data-rel="tooltip"
-                data-placement="top"
-              >
-                <i class={social.icon}></i>
-              </a>
-            </li>
-          ))}
+          {
+            socialLinks.map((social) => (
+              <li>
+                <a
+                  href={social.url}
+                  class={social.class}
+                  title={social.name}
+                  data-rel="tooltip"
+                  data-placement="top"
+                >
+                  <i class={social.icon} />
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
