@@ -1,11 +1,18 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <section id="contact" class="bg-white t-pad100 b-pad80">
   <div class="container">
     <!-- Section Header-->
     <div class="row">
       <div class="col-md-12 text-center b-pad60">
-        <h2 class="heading">Let's Work Together</h2>
+        <h2 class="heading">{t('contact.title')}</h2>
         <p class="h-sub">
-          I'm always interested in hearing about new projects and opportunities.
+          {t('contact.subtitle')}
         </p>
       </div>
     </div>
@@ -23,7 +30,7 @@
               type="text"
               id="name"
               class="form-control"
-              placeholder="Your Name"
+              placeholder={t('contact.form.name')}
               required
               minlength="3"
               maxlength="50"
@@ -36,7 +43,7 @@
               type="email"
               id="email"
               class="form-control"
-              placeholder="Your Email"
+              placeholder={t('contact.form.email')}
               required
             />
           </div>
@@ -47,7 +54,7 @@
               type="text"
               id="subject"
               class="form-control"
-              placeholder="Subject"
+              placeholder={t('contact.form.subject')}
               required
               minlength="5"
               maxlength="100"
@@ -60,7 +67,7 @@
               id="message"
               class="form-control"
               rows="5"
-              placeholder="Your Message"
+              placeholder={t('contact.form.message')}
               required
               minlength="10"
               maxlength="1000"></textarea>
@@ -69,7 +76,7 @@
           <!-- Submit Button Field-->
           <div class="text-center">
             <button type="submit" class="btn large" id="submit-btn">
-              Send Message <i class="arrow_right">&rarr;</i>
+              {t('contact.form.submit')} <i class="arrow_right">&rarr;</i>
             </button>
           </div>
         </form>
@@ -86,6 +93,17 @@
   .btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes slideOut {
@@ -128,6 +146,30 @@
     message: string;
   }
 
+  // Get translations from page lang
+  const lang = window.location.pathname.split('/')[1] || 'en';
+  
+  const messages = {
+    en: {
+      sending: 'Sending your message...',
+      success: "Message sent successfully! I'll get back to you soon.",
+      error: 'There was an error sending your message. Please try again later.',
+      successTitle: 'Success!',
+      errorTitle: 'Error!',
+      infoTitle: 'Notice!',
+    },
+    es: {
+      sending: 'Enviando tu mensaje...',
+      success: '¡Mensaje enviado exitosamente! Te responderé pronto.',
+      error: 'Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo más tarde.',
+      successTitle: '¡Éxito!',
+      errorTitle: '¡Error!',
+      infoTitle: '¡Aviso!',
+    }
+  };
+
+  const t = messages[lang as keyof typeof messages] || messages.en;
+
   // Get form and message container elements
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const messageContainer = document.getElementById(
@@ -142,10 +184,10 @@
     autoClose: boolean = true
   ): void {
     const titles: Record<string, string> = {
-      success: "Success!",
-      danger: "Error!",
-      warning: "Warning!",
-      info: "Notice!",
+      success: t.successTitle,
+      danger: t.errorTitle,
+      warning: 'Warning!',
+      info: t.infoTitle,
     };
 
     const displayTitle = titles[type];
@@ -206,7 +248,7 @@
         .value,
     };
 
-    showMessage("info", "Sending your message...", false);
+    showMessage("info", t.sending, false);
     submitBtn.disabled = true;
 
     try {
@@ -219,19 +261,11 @@
         reply_to: formData.email,
       });
 
-      showMessage(
-        "success",
-        "Message sent successfully! I'll get back to you soon.",
-        true
-      );
+      showMessage("success", t.success, true);
       clearForm();
     } catch (error) {
       console.error("Error sending email:", error);
-      showMessage(
-        "danger",
-        "There was an error sending your message. Please try again later.",
-        true
-      );
+      showMessage("danger", t.error, true);
     } finally {
       submitBtn.disabled = false;
     }

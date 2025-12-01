@@ -1,0 +1,180 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
+---
+
+<div class="language-switcher">
+  <a href="#" class="white lang-toggle" aria-label="Language switcher">
+    <i class="icon-picons-globe"></i>
+    <span class="current-lang">{lang.toUpperCase()}</span>
+    <i class="icon-down-dir"></i>
+  </a>
+  <div class="lang-dropdown">
+    {Object.entries(languages).map(([code, name]) => (
+      <a 
+        href={`/${code}${currentPath ? '/' + currentPath : ''}`}
+        class={`lang-option ${code === lang ? 'active' : ''}`}
+        data-lang={code}
+      >
+        <span class="flag">{code === 'en' ? 'EN' : 'ES'}</span>
+        {name}
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+    display: inline-block;
+  }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .lang-toggle:hover {
+    opacity: 0.8;
+  }
+
+  .lang-toggle i:first-child {
+    font-size: 16px;
+  }
+
+  .lang-toggle i:last-child {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .language-switcher:hover .lang-toggle i:last-child,
+  .language-switcher.active .lang-toggle i:last-child {
+    transform: rotate(180deg);
+  }
+
+  .current-lang {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .lang-dropdown {
+      position: fixed;
+      top: auto;
+      right: 10px;
+      left: 10px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  .language-switcher:hover .lang-dropdown,
+  .language-switcher.active .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .lang-option {
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+  }
+
+  .lang-option:last-child {
+    border-bottom: none;
+  }
+
+  .lang-option .flag {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .lang-option:hover {
+    background: #f8f8f8;
+    padding-left: 18px;
+  }
+
+  .lang-option.active {
+    background: var(--main-color, #3498db);
+    color: white;
+    font-weight: 600;
+  }
+
+  .lang-option.active:hover {
+    background: var(--main-color, #2980b9);
+    padding-left: 14px;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const langToggle = document.querySelector('.lang-toggle') as HTMLAnchorElement;
+    const langSwitcher = document.querySelector('.language-switcher') as HTMLElement;
+    
+    if (langToggle && langSwitcher) {
+      langToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        langSwitcher.classList.toggle('active');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!langSwitcher.contains(e.target as Node)) {
+          langSwitcher.classList.remove('active');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          langSwitcher.classList.remove('active');
+        }
+      });
+
+      const langOptions = langSwitcher.querySelectorAll('.lang-option');
+      langOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          langSwitcher.classList.remove('active');
+        });
+      });
+    }
+  });
+</script>

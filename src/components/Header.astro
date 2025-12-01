@@ -1,29 +1,35 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const navItems = [
   {
-    title: "Home",
+    title: t('nav.home'),
     label: "home",
-    url: "/",
+    url: `/${lang}`,
   },
   {
-    title: "Experience",
+    title: t('nav.experience'),
     label: "experience",
-    url: "/#experience",
+    url: `/${lang}#experience`,
   },
   {
-    title: "Projects",
+    title: t('nav.projects'),
     label: "projects",
-    url: "/#projects",
+    url: `/${lang}#projects`,
   },
   {
-    title: "About me",
+    title: t('nav.about'),
     label: "about-me",
-    url: "/#about-me",
+    url: `/${lang}#about-me`,
   },
   {
-    title: "Contact",
+    title: t('nav.contact'),
     label: "contact",
-    url: "/#contact",
+    url: `/${lang}#contact`,
   },
 ]
 ---
@@ -35,12 +41,10 @@ const navItems = [
     <p>Massa turpis ornare nec commodo non, auctor vel cursus vestibulum varius hendrerit turpis quiseam cursus.</p>
   </div>
   <div class="social-nav-block">
-    <a href="#" class="twitter-alt"><i class="icon-twitter"></i></a>
-    <a href="#" class="facebook-alt"><i class="icon-facebook"></i></a>
-    <a href="#" class="google-alt"><i class="icon-gplus"></i></a>
-    <a href="#" class="linkedin-alt"><i class="icon-linkedin"></i></a>
-    <a href="#" class="pinterest-alt"><i class="icon-pinterest"></i></a>
-    <a href="#" class="dribbble-alt"><i class="icon-dribbble"></i></a>
+    <a href="https://x.com/waldiii_?s=08" class="twitter-alt"><i class="icon-twitter"></i></a>
+    <a href="https://www.facebook.com/waldo.fernandez.773/" class="facebook-alt"><i class="icon-facebook"></i></a>
+    <a href="https://www.linkedin.com/in/waldo-fernández-fariñas-3bbb1836a" class="linkedin-alt"><i class="icon-linkedin"></i></a>
+    <a href="https://github.com/waldiiiFd" class="github-alt"><i class="icon-github"></i></a>
   </div>
 </nav>
 
@@ -68,8 +72,7 @@ const navItems = [
           </li>
         ))}
         <li>
-          <ul class="social-top">
-          </ul>
+          <LanguageSwitcher />
         </li>
       </ul>
       <!-- /navigation -->
@@ -83,18 +86,6 @@ const navItems = [
   <div class="container">
     <div class="row">
       <div class="col-sm-12" style="margin-top:30%;">
-        <!-- <form action="/search" class="center-block" id="header-search-form" method="get">
-          <input
-            type="text"
-            id="header-search"
-            name="s"
-            value="Start Typing..."
-            style="height:150px;"
-            autocomplete="off"
-            onfocus="if (this.value == 'Start Typing...') this.value = '';"
-            onblur="if (this.value == '') this.value = 'Start Typing...';"
-          />
-        </form> -->
       </div>
     </div>
   </div>
@@ -141,4 +132,3 @@ const navItems = [
     }
   })
 </script>
-

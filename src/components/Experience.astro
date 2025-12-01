@@ -1,10 +1,17 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <section id="experience" class="bg-gray t-pad100 b-pad80">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center b-pad60">
-        <h2 class="heading">Experience & Education</h2>
+        <h2 class="heading">{t('experience.title')}</h2>
         <p class="h-sub">
-          My journey in software development and computer engineering.
+          {t('experience.subtitle')}
         </p>
       </div>
     </div>
@@ -20,28 +27,25 @@
             class="experience-badge"
             style="position: absolute; top: 35px; right: 35px; background: var(--main-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600;"
           >
-            CURRENT
+            {t('experience.current')}
           </div>
           <div class="content">
             <h3 style="color: var(--main-color); margin-bottom: 5px;">
-              Backend Developer
+              {t('experience.job.title')}
             </h3>
             <p
               class="text-muted"
               style="margin: 8px 0; font-size: 16px; font-weight: 600;"
             >
               <i class="icon-picons-briefcase" style="margin-right: 8px;"
-              ></i>CODES SRL
+              ></i>{t('experience.job.company')}
             </p>
             <p class="text-muted" style="margin: 5px 0 20px 0;">
               <i class="icon-picons-calendar" style="margin-right: 8px;"
-              ></i>2025 - Present
+              ></i>{t('experience.job.period')}
             </p>
             <p style="line-height: 1.8; color: #555;">
-              Developing and maintaining backend systems and APIs. Working with
-              modern technologies to create scalable and efficient server-side
-              solutions. Collaborating with frontend teams to deliver complete
-              web applications.
+              {t('experience.job.description')}
             </p>
             <div style="margin-top: 20px;">
               <span class="label label-primary" style="margin-right: 10px;"
@@ -80,23 +84,20 @@
           style="padding: 35px; border-radius: 8px; border-left: 4px solid #3498db;"
         >
           <div class="content">
-            <h3 style="color: #3498db; margin-bottom: 5px;">Education</h3>
+            <h3 style="color: #3498db; margin-bottom: 5px;">{t('experience.education.title')}</h3>
             <p
               class="text-muted"
               style="margin: 8px 0; font-size: 16px; font-weight: 600;"
             >
               <i class="icon-picons-graduation" style="margin-right: 8px;"
-              ></i>Universidad Tecnológica de La Habana (CUJAE)
+              ></i>{t('experience.education.school')}
             </p>
             <p class="text-muted" style="margin: 5px 0 20px 0;">
               <i class="icon-picons-calendar" style="margin-right: 8px;"
-              ></i>2022 - 2025
+              ></i>{t('experience.education.period')}
             </p>
             <p style="line-height: 1.8; color: #555; margin-bottom: 20px;">
-              Pursuing a degree in Computer Engineering with focus on software
-              development, algorithms, and system design. Developed strong
-              technical foundations and practical skills through academic
-              projects and coursework.
+              {t('experience.education.description')}
             </p>
           </div>
         </div>

@@ -1,21 +1,23 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <section id="about-me" class="bg-gray t-pad100 b-pad80">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h2 class="heading">About Me</h2>
+        <h2 class="heading">{t('about.title')}</h2>
         <p class="lead t-mgr30">
-          I'm a passionate Full Stack Developer with over 2 years of experience
-          building web applications that make a difference.
+          {t('about.lead')}
         </p>
         <p class="t-mgr20">
-          I love working with modern technologies and I'm always learning new
-          things. When I'm not coding, you can find me contributing to open
-          source projects, writing technical articles, or exploring new
-          frameworks.
+          {t('about.p1')}
         </p>
         <p class="t-mgr20">
-          I believe in writing clean, maintainable code and creating user
-          experiences that are both beautiful and functional.
+          {t('about.p2')}
         </p>
       </div>
 
@@ -28,7 +30,7 @@
           <div style="text-align: center;">
             <i class="icon-picons-user" style="font-size: 100px; opacity: 0.3;"
             ></i>
-            <p style="margin-top: 20px; opacity: 0.7;">Your Photo Here</p>
+            <p style="margin-top: 20px; opacity: 0.7;">{t('about.photo')}</p>
           </div>
         </div>
       </div>

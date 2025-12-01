@@ -10,5 +10,12 @@ export default defineConfig({
       'import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY': JSON.stringify(process.env.PUBLIC_EMAILJS_PUBLIC_KEY),
       'import.meta.env.PUBLIC_RECIPIENT_EMAIL': JSON.stringify(process.env.PUBLIC_RECIPIENT_EMAIL),
     }
-  }
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing:{
+      prefixDefaultLocale: true,
+    }
+  },
 });

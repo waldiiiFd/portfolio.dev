@@ -1,10 +1,17 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <section id="projects" class="bg-white t-pad100 b-pad80">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center b-pad60">
-        <h2 class="heading">Featured Projects</h2>
+        <h2 class="heading">{t('projects.title')}</h2>
         <p class="h-sub">
-          A selection of my recent work and personal projects.
+          {t('projects.subtitle')}
         </p>
       </div>
     </div>
@@ -21,10 +28,9 @@
           >
           </div>
           <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">Project Name</h3>
+            <h3 style="margin-bottom: 10px;">{t('projects.project1.title')}</h3>
             <p style="color: #666; margin-bottom: 15px;">
-              Brief description of the project and the technologies used to
-              build it.
+              {t('projects.project1.desc')}
             </p>
             <div style="margin-bottom: 15px;">
               <span class="label label-info" style="margin-right: 8px;"
@@ -35,7 +41,7 @@
               >
               <span class="label label-info">API</span>
             </div>
-            <a href="#" class="btn btn-sm">View Project &rarr;</a>
+            <a href="#" class="btn btn-sm">{t('projects.cta')} &rarr;</a>
           </div>
         </div>
       </div>
@@ -51,9 +57,9 @@
           >
           </div>
           <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">Another Project</h3>
+            <h3 style="margin-bottom: 10px;">{t('projects.project2.title')}</h3>
             <p style="color: #666; margin-bottom: 15px;">
-              Another amazing project showcasing my skills and expertise.
+              {t('projects.project2.desc')}
             </p>
             <div style="margin-bottom: 15px;">
               <span class="label label-info" style="margin-right: 8px;"
@@ -64,7 +70,7 @@
               >
               <span class="label label-info">Tailwind</span>
             </div>
-            <a href="#" class="btn btn-sm">View Project &rarr;</a>
+            <a href="#" class="btn btn-sm">{t('projects.cta')} &rarr;</a>
           </div>
         </div>
       </div>
@@ -80,9 +86,9 @@
           >
           </div>
           <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">Third Project</h3>
+            <h3 style="margin-bottom: 10px;">{t('projects.project3.title')}</h3>
             <p style="color: #666; margin-bottom: 15px;">
-              A complex application with multiple integrations and features.
+              {t('projects.project3.desc')}
             </p>
             <div style="margin-bottom: 15px;">
               <span class="label label-info" style="margin-right: 8px;"
@@ -93,7 +99,7 @@
               >
               <span class="label label-info">Docker</span>
             </div>
-            <a href="#" class="btn btn-sm">View Project &rarr;</a>
+            <a href="#" class="btn btn-sm">{t('projects.cta')} &rarr;</a>
           </div>
         </div>
       </div>
@@ -101,8 +107,8 @@
 
     <div class="row">
       <div class="col-md-12 text-center t-mgr40">
-        <a href="/projects" class="btn btn-white-brd large">
-          View All Projects <i class="arrow_right">&rarr;</i>
+        <a href={`/${lang}/projects`} class="btn btn-white-brd large">
+          {t('projects.viewAll')} <i class="arrow_right">&rarr;</i>
         </a>
       </div>
     </div>
