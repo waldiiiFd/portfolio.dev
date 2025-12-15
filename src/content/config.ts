@@ -14,6 +14,23 @@ const projectCollection = defineCollection({
   }),
 });
 
+const experienceCollection = defineCollection({
+  type: 'content',  
+  schema: z.object({
+    lang: z.enum(['en', 'es']),
+    title: z.string(),
+    company: z.string(),
+    period: z.string(),
+    description: z.string(),
+    technologies: z.array(z.string()).default([]),
+    type: z.enum(['job', 'education']),
+    current: z.boolean().default(false),
+    order: z.number().default(999),
+    icon: z.string().optional(),
+  }),
+});
+
 export const collections = {
   projects: projectCollection,
+  experience: experienceCollection,
 };

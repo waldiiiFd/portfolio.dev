@@ -40,7 +40,7 @@ export const ui = {
     "experience.subtitle":
       "My journey in software development and computer engineering.",
     "experience.current": "CURRENT",
-    "experience.job.title": "Backend Developer",
+    /* "experience.job.title": "Backend Developer",
     "experience.job.company": "CODES SRL",
     "experience.job.period": "2025 - Present",
     "experience.job.description":
@@ -51,7 +51,7 @@ export const ui = {
     "experience.education.period": "2022 - 2025",
     "experience.education.description":
       "Pursuing a degree in Computer Engineering with focus on software development, algorithms, and system design. Developed strong technical foundations and practical skills through academic projects and coursework.",
-
+ */
     // Projects Section
     "projects.title": "Featured Projects",
     "projects.subtitle": "A selection of my recent work and personal projects.",
@@ -133,7 +133,7 @@ export const ui = {
     "experience.subtitle":
       "Mi trayectoria en desarrollo de software e ingeniería informática.",
     "experience.current": "ACTUAL",
-    "experience.job.title": "Desarrollador Backend",
+     /*"experience.job.title": "Desarrollador Backend",
     "experience.job.company": "CODES SRL",
     "experience.job.period": "2025 - Presente",
     "experience.job.description":
@@ -144,7 +144,7 @@ export const ui = {
     "experience.education.period": "2022 - 2025",
     "experience.education.description":
       "Cursando una carrera en Ingeniería Informática con enfoque en desarrollo de software, algoritmos y diseño de sistemas. Desarrollando fundamentos técnicos sólidos y habilidades prácticas a través de proyectos académicos.",
-
+ */
     // Projects Section
     "projects.title": "Proyectos Destacados",
     "projects.subtitle":
