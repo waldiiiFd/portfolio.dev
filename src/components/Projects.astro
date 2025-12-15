@@ -44,9 +44,9 @@ const featuredProjects = allProjects
               <p style="color: #666; margin-bottom: 15px;">
                 {project.data.description}
               </p>
-              <div style="margin-bottom: 15px;">
+              <div style="margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px;">
                 {project.data.technologies.map((tech) => (
-                  <span class="label label-info" style="margin-right: 8px;">
+                  <span class="label label-info" style="display: inline-block;">
                     {tech}
                   </span>
                 ))}

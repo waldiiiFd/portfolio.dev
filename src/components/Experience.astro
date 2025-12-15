@@ -90,9 +90,9 @@ const sortedExperience = allExperience.sort(
               </p>
 
               {exp.data.technologies && exp.data.technologies.length > 0 && (
-                <div style="margin-bottom: 15px; margin-top: 20px;">
+                <div style="margin-top: 20px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px;">
                   {exp.data.technologies.map((tech) => (
-                    <span class="label label-info" style="margin-right: 8px;">
+                    <span class="label label-info" style="display: inline-block;">
                       {tech}
                     </span>
                   ))}
@@ -115,4 +115,3 @@ const sortedExperience = allExperience.sort(
     </div>
   </div>
 </section>
-
