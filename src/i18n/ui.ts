@@ -55,7 +55,7 @@ export const ui = {
     // Projects Section
     "projects.title": "Featured Projects",
     "projects.subtitle": "A selection of my recent work and personal projects.",
-    "projects.project1.title": "Automated Student Guard System",
+    /* "projects.project1.title": "Automated Student Guard System",
     "projects.project1.desc":
       "A web system developed for CUJAE University to automate and optimize the management of mandatory student labor guard. Replaced manual Excel processes with an automated platform featuring semi-automatic planning, user role management, and real-time notifications.",
     "projects.project2.title": "Another Project",
@@ -63,9 +63,9 @@ export const ui = {
       "Another amazing project showcasing my skills and expertise.",
     "projects.project3.title": "Third Project",
     "projects.project3.desc":
-      "A complex application with multiple integrations and features.",
-    "projects.cta": "View Project",
-    "projects.viewAll": "View All Projects",
+      "A complex application with multiple integrations and features.", */
+    /*     "projects.cta": "View Project",
+    "projects.viewAll": "View All Projects", */
 
     // About Section
     "about.title": "About Me",
@@ -149,17 +149,17 @@ export const ui = {
     "projects.title": "Proyectos Destacados",
     "projects.subtitle":
       "Una selección de mi trabajo reciente y proyectos personales.",
-    "projects.project1.title": "Sistema Automatizado de Guardia Estudiantil",
+    /* "projects.project1.title": "Sistema Automatizado de Guardia Estudiantil",
     "projects.project1.desc":
-      "Sistema web desarrollado para la Universidad CUJAE para automatizar y optimizar la gestión de la guardia obrera estudiantil obligatoria. Sustituyó procesos manuales en Excel por una plataforma automatizada con planificación semiautomática, gestión de roles de usuario y notificaciones en tiempo real.",                                                         
+      "Sistema web desarrollado para la Universidad CUJAE para automatizar y optimizar la gestión de la guardia obrera estudiantil obligatoria. Sustituyó procesos manuales en Excel por una plataforma automatizada con planificación semiautomática, gestión de roles de usuario y notificaciones en tiempo real.",
     "projects.project2.title": "Otro Proyecto",
     "projects.project2.desc":
       "Otro proyecto increíble que muestra mis habilidades y experiencia.",
     "projects.project3.title": "Tercer Proyecto",
     "projects.project3.desc":
-      "Una aplicación compleja con múltiples integraciones y características.",
-    "projects.cta": "Ver Proyecto",
-    "projects.viewAll": "Ver Todos los Proyectos",
+      "Una aplicación compleja con múltiples integraciones y características.", */
+    /* "projects.cta": "Ver Proyecto",
+    "projects.viewAll": "Ver Todos los Proyectos", */
 
     // About Section
     "about.title": "Sobre Mí",

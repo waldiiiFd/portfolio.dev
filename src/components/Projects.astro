@@ -1,8 +1,20 @@
 ---
+import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Get all projects for the current language
+const allProjects = await getCollection('projects', ({ data }) => {
+  return data.lang === lang;
+});
+
+// Sort projects by order and get featured projects
+const featuredProjects = allProjects
+  .filter(project => project.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3); // Show only 3 featured projects
 ---
 
 <section id="projects" class="bg-white t-pad100 b-pad80">
@@ -17,103 +29,45 @@ const t = useTranslations(lang);
     </div>
 
     <div class="row">
-      <!-- Project 1 -->
-      <div class="col-md-4 b-mgr40">
-        <div
-          class="project-card"
-          style="border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden;"
-        >
+      {featuredProjects.map((project) => (
+        <div class="col-md-4 b-mgr40">
           <div
-            style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
+            class="project-card"
+            style="border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden;"
           >
-          </div>
-          <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">{t("projects.project1.title")}</h3>
-            <p style="color: #666; margin-bottom: 15px;">
-              {t("projects.project1.desc")}
-            </p>
-            <div style="margin-bottom: 15px;">
-              <span class="label label-info" style="margin-right: 8px;"
-                >Nest.js</span
-              >
-              <span class="label label-info" style="margin-right: 8px;"
-                >Vue.js</span
-              >
-              <span class="label label-info" style="margin-right: 8px;"
-                >PostgreSQL</span
-              >
-              <span class="label label-info">TypeScript</span>
+            <div
+              style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
+            >
             </div>
-            <!-- <a href="#" class="btn btn-sm">{t("projects.cta")} &rarr;</a> -->
+            <div style="padding: 25px;">
+              <h3 style="margin-bottom: 10px;">{project.data.title}</h3>
+              <p style="color: #666; margin-bottom: 15px;">
+                {project.data.description}
+              </p>
+              <div style="margin-bottom: 15px;">
+                {project.data.technologies.map((tech) => (
+                  <span class="label label-info" style="margin-right: 8px;">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+             {/*  {{project.data.link && (
+                <a href={project.data.link} class="btn btn-sm">
+                  {t("projects.cta")} &rarr;
+                </a>
+              )}} */}
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="col-md-4 b-mgr40">
-        <div
-          class="project-card"
-          style="border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden;"
-        >
-          <div
-            style="height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"
-          >
-          </div>
-          <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">{t("projects.project2.title")}</h3>
-            <p style="color: #666; margin-bottom: 15px;">
-              {t("projects.project2.desc")}
-            </p>
-            <div style="margin-bottom: 15px;">
-              <span class="label label-info" style="margin-right: 8px;"
-                >Astro</span
-              >
-              <span class="label label-info" style="margin-right: 8px;"
-                >TypeScript</span
-              >
-              <span class="label label-info">Tailwind</span>
-            </div>
-            <a href="#" class="btn btn-sm">{t("projects.cta")} &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="col-md-4 b-mgr40">
-        <div
-          class="project-card"
-          style="border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden;"
-        >
-          <div
-            style="height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"
-          >
-          </div>
-          <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">{t("projects.project3.title")}</h3>
-            <p style="color: #666; margin-bottom: 15px;">
-              {t("projects.project3.desc")}
-            </p>
-            <div style="margin-bottom: 15px;">
-              <span class="label label-info" style="margin-right: 8px;"
-                >Vue.js</span
-              >
-              <span class="label label-info" style="margin-right: 8px;"
-                >Python</span
-              >
-              <span class="label label-info">Docker</span>
-            </div>
-            <a href="#" class="btn btn-sm">{t("projects.cta")} &rarr;</a>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
 
     <div class="row">
       <div class="col-md-12 text-center t-mgr40">
-        <a href={`/${lang}/projects`} class="btn btn-white-brd large">
+        <!-- <a href={`/${lang}/projects`} class="btn btn-white-brd large">
           {t("projects.viewAll")}
           <i class="arrow_right">&rarr;</i>
-        </a>
+        </a> -->
       </div>
     </div>
   </div>
