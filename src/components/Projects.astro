@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -9,9 +9,9 @@ const t = useTranslations(lang);
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center b-pad60">
-        <h2 class="heading">{t('projects.title')}</h2>
+        <h2 class="heading">{t("projects.title")}</h2>
         <p class="h-sub">
-          {t('projects.subtitle')}
+          {t("projects.subtitle")}
         </p>
       </div>
     </div>
@@ -28,20 +28,23 @@ const t = useTranslations(lang);
           >
           </div>
           <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">{t('projects.project1.title')}</h3>
+            <h3 style="margin-bottom: 10px;">{t("projects.project1.title")}</h3>
             <p style="color: #666; margin-bottom: 15px;">
-              {t('projects.project1.desc')}
+              {t("projects.project1.desc")}
             </p>
             <div style="margin-bottom: 15px;">
               <span class="label label-info" style="margin-right: 8px;"
-                >React</span
+                >Nest.js</span
               >
               <span class="label label-info" style="margin-right: 8px;"
-                >Node.js</span
+                >Vue.js</span
               >
-              <span class="label label-info">API</span>
+              <span class="label label-info" style="margin-right: 8px;"
+                >PostgreSQL</span
+              >
+              <span class="label label-info">TypeScript</span>
             </div>
-            <a href="#" class="btn btn-sm">{t('projects.cta')} &rarr;</a>
+            <!-- <a href="#" class="btn btn-sm">{t("projects.cta")} &rarr;</a> -->
           </div>
         </div>
       </div>
@@ -57,9 +60,9 @@ const t = useTranslations(lang);
           >
           </div>
           <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">{t('projects.project2.title')}</h3>
+            <h3 style="margin-bottom: 10px;">{t("projects.project2.title")}</h3>
             <p style="color: #666; margin-bottom: 15px;">
-              {t('projects.project2.desc')}
+              {t("projects.project2.desc")}
             </p>
             <div style="margin-bottom: 15px;">
               <span class="label label-info" style="margin-right: 8px;"
@@ -70,7 +73,7 @@ const t = useTranslations(lang);
               >
               <span class="label label-info">Tailwind</span>
             </div>
-            <a href="#" class="btn btn-sm">{t('projects.cta')} &rarr;</a>
+            <a href="#" class="btn btn-sm">{t("projects.cta")} &rarr;</a>
           </div>
         </div>
       </div>
@@ -86,9 +89,9 @@ const t = useTranslations(lang);
           >
           </div>
           <div style="padding: 25px;">
-            <h3 style="margin-bottom: 10px;">{t('projects.project3.title')}</h3>
+            <h3 style="margin-bottom: 10px;">{t("projects.project3.title")}</h3>
             <p style="color: #666; margin-bottom: 15px;">
-              {t('projects.project3.desc')}
+              {t("projects.project3.desc")}
             </p>
             <div style="margin-bottom: 15px;">
               <span class="label label-info" style="margin-right: 8px;"
@@ -99,7 +102,7 @@ const t = useTranslations(lang);
               >
               <span class="label label-info">Docker</span>
             </div>
-            <a href="#" class="btn btn-sm">{t('projects.cta')} &rarr;</a>
+            <a href="#" class="btn btn-sm">{t("projects.cta")} &rarr;</a>
           </div>
         </div>
       </div>
@@ -108,7 +111,8 @@ const t = useTranslations(lang);
     <div class="row">
       <div class="col-md-12 text-center t-mgr40">
         <a href={`/${lang}/projects`} class="btn btn-white-brd large">
-          {t('projects.viewAll')} <i class="arrow_right">&rarr;</i>
+          {t("projects.viewAll")}
+          <i class="arrow_right">&rarr;</i>
         </a>
       </div>
     </div>
