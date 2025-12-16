@@ -16,7 +16,7 @@ export const ui = {
     // Home Section
     "home.greeting": "Hey, I'm",
     "home.name": "Waldo Fernandez",
-    "home.title": "Full Stack Developer",
+    "home.title": "Software Engineer",
     "home.description":
       "Passionate about creating amazing digital experiences with modern technologies. Specialized in web development, creating scalable and efficient solutions.",
     "home.cta.contact": "Get In Touch",
@@ -70,9 +70,9 @@ export const ui = {
     // About Section
     "about.title": "About Me",
     "about.lead":
-      "I'm a passionate Full Stack Developer with over 2 years of experience building web applications that make a difference.",
+      "I'm a passionate Software Engineer with over 2 years of experience building web applications that make a difference.",
     "about.p1":
-      "I love working with modern technologies and I'm always learning new things. When I'm not coding, you can find me contributing to open source projects, writing technical articles, or exploring new frameworks.",
+      "I love working with modern technologies and I'm always learning new things. I adapt to new technologies quickly. I integrate effectively into multidisciplinary teams.",
     "about.p2":
       "I believe in writing clean, maintainable code and creating user experiences that are both beautiful and functional.",
     "about.photo": "Your Photo Here",
@@ -109,7 +109,7 @@ export const ui = {
     // Home Section
     "home.greeting": "Hola, soy",
     "home.name": "Waldo Fernández",
-    "home.title": "Desarrollador Full Stack",
+    "home.title": "Software Engineer",
     "home.description":
       "Apasionado por crear experiencias digitales increíbles con tecnologías modernas. Especializado en desarrollo web, creando soluciones escalables y eficientes.",
     "home.cta.contact": "Contáctame",
@@ -164,9 +164,9 @@ export const ui = {
     // About Section
     "about.title": "Sobre Mí",
     "about.lead":
-      "Soy un Desarrollador Full Stack apasionado con más de 2 años de experiencia construyendo aplicaciones web que marcan la diferencia.",
+      "Soy un Ingeniero de Software apasionado con más de 2 años de experiencia construyendo aplicaciones web que marcan la diferencia.",
     "about.p1":
-      "Me encanta trabajar con tecnologías modernas y siempre estoy aprendiendo cosas nuevas. Cuando no estoy programando, puedes encontrarme contribuyendo a proyectos de código abierto, escribiendo artículos técnicos o explorando nuevos frameworks.",
+      "Me encanta trabajar con tecnologías modernas y siempre estoy aprendiendo cosas nuevas. Me adapto rápidamente a las nuevas tecnologías. Me integro eficazmente en equipos multidisciplinarios.",
     "about.p2":
       "Creo en escribir código limpio y mantenible, y en crear experiencias de usuario que sean tanto hermosas como funcionales.",
     "about.photo": "Tu Foto Aquí",

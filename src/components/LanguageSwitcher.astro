@@ -1,35 +1,38 @@
 ---
-import { languages } from '../i18n/ui';
-import { getLangFromUrl } from '../i18n/utils';
+import { languages } from "../i18n/ui";
+import { getLangFromUrl } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
-const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
+const currentPath = Astro.url.pathname.split("/").slice(2).join("/") || "";
 ---
 
-<div class="language-switcher">
+<li class="lang-switcher-container">
   <a href="#" class="white lang-toggle" aria-label="Language switcher">
     <i class="icon-picons-globe"></i>
     <span class="current-lang">{lang.toUpperCase()}</span>
     <i class="icon-down-dir"></i>
   </a>
   <div class="lang-dropdown">
-    {Object.entries(languages).map(([code, name]) => (
-      <a 
-        href={`/${code}${currentPath ? '/' + currentPath : ''}`}
-        class={`lang-option ${code === lang ? 'active' : ''}`}
-        data-lang={code}
-      >
-        <span class="flag">{code === 'en' ? 'EN' : 'ES'}</span>
-        {name}
-      </a>
-    ))}
+    {
+      Object.entries(languages).map(([code, name]) => (
+        <a
+          href={`/${code}${currentPath ? "/" + currentPath : ""}`}
+          class={`lang-option ${code === lang ? "active" : ""}`}
+          data-lang={code}
+        >
+          <span class="flag">{code === "en" ? "EN" : "ES"}</span>
+          {name}
+        </a>
+      ))
+    }
   </div>
-</div>
+</li>
 
 <style>
-  .language-switcher {
+  .lang-switcher-container {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
   }
 
   .lang-toggle {
@@ -38,6 +41,9 @@ const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
     gap: 6px;
     text-decoration: none;
     transition: opacity 0.3s ease;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: white;
   }
 
   .lang-toggle:hover {
@@ -53,11 +59,6 @@ const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
     transition: transform 0.3s ease;
   }
 
-  .language-switcher:hover .lang-toggle i:last-child,
-  .language-switcher.active .lang-toggle i:last-child {
-    transform: rotate(180deg);
-  }
-
   .current-lang {
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -66,7 +67,7 @@ const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
 
   .lang-dropdown {
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     right: 0;
     background: white;
     border: 1px solid #e5e5e5;
@@ -79,24 +80,33 @@ const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
     transition: all 0.3s ease;
     z-index: 1000;
     overflow: hidden;
+    pointer-events: none;
   }
 
   @media (max-width: 768px) {
-    .lang-dropdown {
-      position: fixed;
-      top: auto;
-      right: 10px;
-      left: 10px;
-      max-width: 300px;
-      margin: 0 auto;
+    .lang-switcher-container {
+      width: 100%;
+      position: static;
     }
-  }
 
-  .language-switcher:hover .lang-dropdown,
-  .language-switcher.active .lang-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    .lang-toggle {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 15px;
+    }
+
+    .lang-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      right: auto;
+      max-width: 250px;
+    }
+
+    .lang-dropdown.open {
+      transform: translateX(-50%) translateY(0);
+    }
   }
 
   .lang-option {
@@ -116,6 +126,7 @@ const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
     .lang-option {
       padding: 12px 16px;
       font-size: 14px;
+      justify-content: center;
     }
   }
 
@@ -143,36 +154,84 @@ const currentPath = Astro.url.pathname.split('/').slice(2).join('/') || '';
     background: var(--main-color, #2980b9);
     padding-left: 14px;
   }
+
+  .lang-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .lang-toggle.open i:last-child {
+    transform: rotate(180deg);
+  }
 </style>
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const langToggle = document.querySelector('.lang-toggle') as HTMLAnchorElement;
-    const langSwitcher = document.querySelector('.language-switcher') as HTMLElement;
-    
-    if (langToggle && langSwitcher) {
-      langToggle.addEventListener('click', (e) => {
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const langToggle = document.querySelector(".lang-toggle");
+    const langDropdown = document.querySelector(".lang-dropdown");
+    const container = document.querySelector(".lang-switcher-container");
+
+    if (langToggle && langDropdown && container) {
+      // Toggle on click
+      langToggle.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        langSwitcher.classList.toggle('active');
-      });
 
-      document.addEventListener('click', (e) => {
-        if (!langSwitcher.contains(e.target as Node)) {
-          langSwitcher.classList.remove('active');
+        const isOpen = langDropdown.classList.contains("open");
+
+        // Close all other dropdowns
+        document.querySelectorAll(".lang-dropdown.open").forEach((dropdown) => {
+          if (dropdown !== langDropdown) {
+            dropdown.classList.remove("open");
+            dropdown.previousElementSibling?.classList.remove("open");
+          }
+        });
+
+        if (isOpen) {
+          langDropdown.classList.remove("open");
+          langToggle.classList.remove("open");
+        } else {
+          langDropdown.classList.add("open");
+          langToggle.classList.add("open");
         }
       });
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          langSwitcher.classList.remove('active');
+      // Hover effect for desktop
+      if (window.innerWidth > 768) {
+        container.addEventListener("mouseenter", () => {
+          langDropdown.classList.add("open");
+          langToggle.classList.add("open");
+        });
+
+        container.addEventListener("mouseleave", () => {
+          langDropdown.classList.remove("open");
+          langToggle.classList.remove("open");
+        });
+      }
+
+      // Close on click outside
+      document.addEventListener("click", (e) => {
+        if (!container.contains(e.target)) {
+          langDropdown.classList.remove("open");
+          langToggle.classList.remove("open");
         }
       });
 
-      const langOptions = langSwitcher.querySelectorAll('.lang-option');
-      langOptions.forEach(option => {
-        option.addEventListener('click', () => {
-          langSwitcher.classList.remove('active');
+      // Close on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          langDropdown.classList.remove("open");
+          langToggle.classList.remove("open");
+        }
+      });
+
+      // Close on mobile when selecting a language
+      langDropdown.querySelectorAll(".lang-option").forEach((option) => {
+        option.addEventListener("click", () => {
+          langDropdown.classList.remove("open");
+          langToggle.classList.remove("open");
         });
       });
     }

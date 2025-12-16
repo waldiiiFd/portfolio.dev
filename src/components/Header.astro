@@ -1,79 +1,86 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navItems = [
   {
-    title: t('nav.home'),
+    title: t("nav.home"),
     label: "home",
     url: `/${lang}`,
   },
   {
-    title: t('nav.experience'),
+    title: t("nav.experience"),
     label: "experience",
     url: `/${lang}#experience`,
   },
   {
-    title: t('nav.projects'),
+    title: t("nav.projects"),
     label: "projects",
     url: `/${lang}#projects`,
   },
   {
-    title: t('nav.about'),
+    title: t("nav.about"),
     label: "about-me",
     url: `/${lang}#about-me`,
   },
   {
-    title: t('nav.contact'),
+    title: t("nav.contact"),
     label: "contact",
     url: `/${lang}#contact`,
   },
-]
+];
 ---
 
 <!-- Mobile/Side Navigation -->
 <nav id="main-nav">
-  <div class="widget">
-    <p>Blend elementum consequat lacus, sit amet pulvinar urna hendrerit sit amet. Sed aliquam eu ante a ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-    <p>Massa turpis ornare nec commodo non, auctor vel cursus vestibulum varius hendrerit turpis quiseam cursus.</p>
-  </div>
   <div class="social-nav-block">
-    <a href="https://x.com/waldiii_?s=08" class="twitter-alt"><i class="icon-twitter"></i></a>
-    <a href="https://www.facebook.com/waldo.fernandez.773/" class="facebook-alt"><i class="icon-facebook"></i></a>
-    <a href="https://www.linkedin.com/in/waldo-fernández-fariñas-3bbb1836a" class="linkedin-alt"><i class="icon-linkedin"></i></a>
-    <a href="https://github.com/waldiiiFd" class="github-alt"><i class="icon-github"></i></a>
+    <a href="https://x.com/waldiii_?s=08" class="twitter-alt"
+      ><i class="icon-twitter"></i></a
+    >
+    <a href="https://www.facebook.com/waldo.fernandez.773/" class="facebook-alt"
+      ><i class="icon-facebook"></i></a
+    >
+    <a
+      href="https://www.linkedin.com/in/waldo-fernández-fariñas-3bbb1836a"
+      class="linkedin-alt"><i class="icon-linkedin"></i></a
+    >
+    <a href="https://github.com/waldiiiFd" class="github-alt"
+      ><i class="icon-github"></i></a
+    >
   </div>
 </nav>
 
 <!-- Main Header -->
 <div class="header-nav basic set yamm nobg">
   <div class="container">
+    <!-- Logo -->
     <div class="basic-wrapper">
-      <a class="btn mobile-menu right" data-toggle="collapse" data-target=".navbar-collapse">
-        <i class="icon-menu-1"></i>
-      </a>
+      <a
+        class="btn mobile-menu right"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"><i class="icon-menu-1"></i></a
+      >
+      <a class="logo-white"><img src="/icons/letra-w.png" alt="" /></a>
+      <a class="logo-dark"><img src="/icons/letra-w.png" alt="" /></a>
     </div>
 
     <div class="collapse navbar-collapse right">
       <!-- Navigation -->
       <ul class="nav navbar-nav">
-        {navItems.map((link) => (
-          <li>
-            <a
-              href={link.url}
-              class="white"
-              aria-label={link.label}
-            >
-              {link.title}
-            </a>
-          </li>
-        ))}
-        <li>
-          <LanguageSwitcher />
-        </li>
+        {
+          navItems.map((link) => (
+            <li>
+              <a href={link.url} class="white" aria-label={link.label}>
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
+        <!-- El componente LanguageSwitcher ya incluye su propio <li> -->
+        <LanguageSwitcher />
       </ul>
       <!-- /navigation -->
     </div>
@@ -85,50 +92,49 @@ const navItems = [
   <button type="button" class="overlay-close">Close</button>
   <div class="container">
     <div class="row">
-      <div class="col-sm-12" style="margin-top:30%;">
-      </div>
+      <div class="col-sm-12" style="margin-top:30%;"></div>
     </div>
   </div>
 </div>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll(".header-nav nav a")
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".header-nav nav a");
 
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("active")
+              item.classList.add("active");
             } else {
-              item.classList.remove("active")
+              item.classList.remove("active");
             }
-          })
+          });
         }
-      })
-    }
+      });
+    };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
       rootMargin: "0px",
       threshold: 0.3,
-    })
+    });
 
     sections.forEach((section) => {
-      observer.observe(section)
-    })
+      observer.observe(section);
+    });
 
     // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
-        observer.disconnect()
+        observer.disconnect();
       } else {
         sections.forEach((section) => {
-          observer.observe(section)
-        })
+          observer.observe(section);
+        });
       }
-    }
-  })
+    };
+  });
 </script>

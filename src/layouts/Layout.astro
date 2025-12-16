@@ -1,79 +1,132 @@
 ---
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
+  lang?: string;
+  keywords?: string;
+  author?: string;
 }
 
-const { 
-  title = 'Blend - Portfolio',
-  description = 'Modern portfolio website' 
+const {
+  title = "Waldo Fernández - Software Engineer Portfolio",
+  description = "Software Engineer with 2 years of experience. Explore my projects and professional experience.",
+  lang = "en",
+  keywords = "software engineer, web developer, portfolio, waldo fernandez, full stack developer",
+  author = "Waldo Fernández",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content={description} />
-  <meta name="generator" content={Astro.generator} />
-  
-  <title>{title}</title>
-  
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="/icons/letra-w.png" />
-  
-  <!-- Blend CSS Files -->
-  <link rel="stylesheet" type="text/css" href="/blend/css/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/style.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/responsive.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/color/blue.css" id="colors" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/settings.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/owl.carousel.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/jquery.fancybox.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/open-sans.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/raleway.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/roboto.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/fonts/fontello.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/fonts/gizmo.css" />
-  <link rel="stylesheet" type="text/css" href="/blend/css/fonts/picons.css" />
-  <script is:inline src="/blend/js/modernizr.custom.js"></script>
-</head>
-<body>
-  <!-- Loader -->
-  <div class="loader">
-    <div class="spinner">
-      <div class="double-bounce1"></div>
-      <div class="double-bounce2"></div>
-    </div>
-  </div>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-  <!-- Content Wrapper -->
-  <div class="content-wrap">
-    <div class="content">
-      <slot />
-    </div>
-  </div>
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <meta name="generator" content={Astro.generator} />
 
-  <!-- Blend JS Files -->
-  <script is:inline src="/blend/js/jquery.min.js"></script>
-  <script is:inline src="/blend/js/jquery.themepunch.plugins.min.js"></script>
-  <script is:inline src="/blend/js/jquery.themepunch.revolution.min.js"></script>
-  <script is:inline src="/blend/js/bootstrap.min.js"></script>
-  <script is:inline src="/blend/js/jquery.inview.js"></script>
-  <script is:inline src="/blend/js/isotope.pkgd.min.js"></script>
-  <script is:inline src="/blend/js/imagesloaded.pkgd.min.js"></script>
-  <script is:inline src="/blend/js/jquery.fancybox.pack.js"></script>
-  <script is:inline src="/blend/js/jquery.easytabs.min.js"></script>
-  <script is:inline src="/blend/js/jquery.sticky.js"></script>
-  <script is:inline src="/blend/js/owl.carousel.min.js"></script>
-  <script is:inline src="/blend/js/jquery.zflickrfeed.min.js"></script>
-  <script is:inline src="/blend/js/twitter-bootstrap-hover-dropdown.min.js"></script>
-  <script is:inline src="/blend/js/jquery.easy-pie-chart.js"></script>
-  <script is:inline src="/blend/js/classie.js"></script>
-  <script is:inline src="/blend/js/search.js"></script>
-  <script is:inline src="/blend/js/gizmo.js"></script>
-  <script is:inline src="/blend/js/scripts.js"></script>
-</body>
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content={lang === "en" ? "English" : "Spanish"} />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#2196F3" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/icons/letra-w.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/letra-w.png" />
+    <link rel="apple-touch-icon" href="/icons/letra-w.png" />
+
+    <!-- Blend CSS Files -->
+    <link rel="stylesheet" type="text/css" href="/blend/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/blend/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/blend/css/responsive.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/blend/css/color/blue.css"
+      id="colors"
+    />
+    <link rel="stylesheet" type="text/css" href="/blend/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="/blend/css/owl.carousel.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/blend/css/jquery.fancybox.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/blend/css/open-sans.css" />
+    <link rel="stylesheet" type="text/css" href="/blend/css/raleway.css" />
+    <link rel="stylesheet" type="text/css" href="/blend/css/roboto.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/blend/css/fonts/fontello.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/blend/css/fonts/gizmo.css" />
+    <link rel="stylesheet" type="text/css" href="/blend/css/fonts/picons.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <script is:inline src="/blend/js/modernizr.custom.js"></script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Waldo Fernández",
+        jobTitle: "Software Engineer",
+        description: description,
+        sameAs: [
+          "https://github.com/waldiiiFd",
+          "https://linkedin.com/in/waldo-fernández-fariñas-3bbb1836a",
+        ],
+      })}
+    />
+  </head>
+  <body>
+    <!-- Loader -->
+    <div class="loader">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrap">
+      <div class="content">
+        <slot />
+      </div>
+    </div>
+
+    <!-- Blend JS Files -->
+    <script is:inline src="/blend/js/jquery.min.js"></script>
+    <script is:inline src="/blend/js/jquery.themepunch.plugins.min.js"></script>
+    <script is:inline src="/blend/js/jquery.themepunch.revolution.min.js"
+    ></script>
+    <script is:inline src="/blend/js/bootstrap.min.js"></script>
+    <script is:inline src="/blend/js/jquery.inview.js"></script>
+    <script is:inline src="/blend/js/isotope.pkgd.min.js"></script>
+    <script is:inline src="/blend/js/imagesloaded.pkgd.min.js"></script>
+    <script is:inline src="/blend/js/jquery.fancybox.pack.js"></script>
+    <script is:inline src="/blend/js/jquery.easytabs.min.js"></script>
+    <script is:inline src="/blend/js/jquery.sticky.js"></script>
+    <script is:inline src="/blend/js/owl.carousel.min.js"></script>
+    <script is:inline src="/blend/js/jquery.zflickrfeed.min.js"></script>
+    <script is:inline src="/blend/js/twitter-bootstrap-hover-dropdown.min.js"
+    ></script>
+    <script is:inline src="/blend/js/jquery.easy-pie-chart.js"></script>
+    <script is:inline src="/blend/js/classie.js"></script>
+    <script is:inline src="/blend/js/search.js"></script>
+    <script is:inline src="/blend/js/gizmo.js"></script>
+    <script is:inline src="/blend/js/scripts.js"></script>
+  </body>
 </html>
-

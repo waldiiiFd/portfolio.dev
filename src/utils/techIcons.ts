@@ -1,0 +1,17 @@
+export const techIcons: Record<string, string> = {
+  PHP: "devicon-php-plain colored",
+  Laravel: "devicon-laravel-plain colored",
+  PostgreSQL: "devicon-postgresql-plain colored",
+  MariaDB: "devicon-mariadb-plain colored",
+  "REST APIs": "devicon-fastapi-plain colored",
+  Git: "devicon-git-plain colored",
+  GitHub: "devicon-github-original",
+  Postman: "devicon-postman-plain colored",
+  "Postman API": "devicon-postman-plain colored",
+  JavaScript: "devicon-javascript-plain colored",
+  TypeScript: "devicon-typescript-plain colored",
+  Vue: "devicon-vuejs-plain colored",
+  React: "devicon-react-original colored",
+  Astro: "devicon-astro-plain",
+  NestJS: "devicon-nestjs-plain colored",
+};
