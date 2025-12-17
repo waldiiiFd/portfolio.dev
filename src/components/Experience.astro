@@ -6,7 +6,6 @@ import { techIcons } from "../utils/techIcons";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-
 // Get all experience items for the current language
 const allExperience = await getCollection("experience", ({ data }) => {
   return data.lang === lang;
