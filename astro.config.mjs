@@ -22,5 +22,14 @@ export default defineConfig({
     }
   },
   site: 'https://waldofernandezdev.netlify.app',
-  integrations: [sitemap()],
+  integrations: [sitemap({
+  i18n: {
+    defaultLocale: 'en',
+    locales: {
+      en: 'en',
+      es: 'es',
+    },
+  },
+})],
+
 });
