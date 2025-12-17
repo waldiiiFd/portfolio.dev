@@ -70,7 +70,7 @@ export const ui = {
     // About Section
     "about.title": "About Me",
     "about.lead":
-      "I'm a passionate Software Engineer with over 2 years of experience building web applications that make a difference.",
+      "I'm a Software Engineer with over 2 years of experience building web applications that make a difference.",
     "about.p1":
       "I love working with modern technologies and I'm always learning new things. I adapt to new technologies quickly. I integrate effectively into multidisciplinary teams.",
     "about.p2":
@@ -108,8 +108,8 @@ export const ui = {
 
     // Home Section
     "home.greeting": "Hola, soy",
-    "home.name": "Waldo Fernández",
-    "home.title": "Software Engineer",
+    "home.name": "Waldo Fernández Fariñas",
+    "home.title": "Ingeniero de Software",
     "home.description":
       "Apasionado por crear experiencias digitales increíbles con tecnologías modernas. Especializado en desarrollo web, creando soluciones escalables y eficientes.",
     "home.cta.contact": "Contáctame",
@@ -164,7 +164,7 @@ export const ui = {
     // About Section
     "about.title": "Sobre Mí",
     "about.lead":
-      "Soy un Ingeniero de Software apasionado con más de 2 años de experiencia construyendo aplicaciones web que marcan la diferencia.",
+      "Soy un Ingeniero de Software con más de 2 años de experiencia construyendo aplicaciones web que marcan la diferencia.",
     "about.p1":
       "Me encanta trabajar con tecnologías modernas y siempre estoy aprendiendo cosas nuevas. Me adapto rápidamente a las nuevas tecnologías. Me integro eficazmente en equipos multidisciplinarios.",
     "about.p2":
@@ -191,6 +191,6 @@ export const ui = {
     "footer.email": "Correo",
     "footer.location": "Ubicación",
     "footer.timing": "Horario",
-    "footer.copyright": "Hecho por Waldo Fernández.",
+    "footer.copyright": "Hecho por Waldo Fernández Fariñas.",
   },
 } as const;
