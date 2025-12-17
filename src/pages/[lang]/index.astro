@@ -22,11 +22,11 @@ const t = useTranslations(lang);
 
 const title = lang === 'en'
   ? "Waldo Fernandez's Portfolio" 
-  : "Portafolio de Waldo Fernández";
+  : "Portafolio de Waldo Fernández Fariñas";
 
 const description = lang === 'en'
   ? "Waldo Fernandez's Portfolio Website - 2 years of experience as a Software Engineer."
-  : "Sitio Web del Portafolio de Waldo Fernández - 2 años de experiencia como Ingeniero de Software";
+  : "Sitio Web del Portafolio de Waldo Fernández Fariñas - 2 años de experiencia como Ingeniero de Software";
 ---
 
 <Layout
@@ -35,10 +35,21 @@ const description = lang === 'en'
 >
   <Header />
   <Banner />
-  <Home />
-  <Experience />
-  <Projects />
-  <AboutMe />
-  <Contact />
+  <div data-aos="zoom-out">
+    <Home />
+  </div>
+  <div data-aos="zoom-out" data-aos-delay="100">
+    <Experience />
+  </div>
+  <div data-aos="zoom-out" data-aos-delay="150">
+    <Projects />
+  </div>
+  <div data-aos="zoom-out" data-aos-delay="200">
+    <AboutMe />
+  </div>
+  <div data-aos="flip-right" data-aos-delay="250">
+    <Contact />
+  </div>
+
   <Footer />
 </Layout>

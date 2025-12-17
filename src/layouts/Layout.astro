@@ -8,11 +8,11 @@ interface Props {
 }
 
 const {
-  title = "Waldo Fernández - Software Engineer Portfolio",
+  title = "Waldo Fernández Fariñas - Software Engineer Portfolio",
   description = "Software Engineer with 2 years of experience. Explore my projects and professional experience.",
   lang = "en",
   keywords = "software engineer, web developer, portfolio, waldo fernandez, full stack developer",
-  author = "Waldo Fernández",
+  author = "Waldo Fernández Fariñas",
 } = Astro.props;
 ---
 
@@ -43,6 +43,9 @@ const {
     <link rel="shortcut icon" href="/icons/letra-w.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/letra-w.png" />
     <link rel="apple-touch-icon" href="/icons/letra-w.png" />
+
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
     <!-- Blend CSS Files -->
     <link rel="stylesheet" type="text/css" href="/blend/css/bootstrap.css" />
@@ -75,13 +78,14 @@ const {
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
+
     <script is:inline src="/blend/js/modernizr.custom.js"></script>
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Person",
-        name: "Waldo Fernández",
+        name: "Waldo Fernández Fariñas",
         jobTitle: "Software Engineer",
         description: description,
         sameAs: [
@@ -110,8 +114,7 @@ const {
     <!-- Blend JS Files -->
     <script is:inline src="/blend/js/jquery.min.js"></script>
     <script is:inline src="/blend/js/jquery.themepunch.plugins.min.js"></script>
-    <script is:inline src="/blend/js/jquery.themepunch.revolution.min.js"
-    ></script>
+    <script is:inline src="/blend/js/jquery.themepunch.revolution.min.js"></script>
     <script is:inline src="/blend/js/bootstrap.min.js"></script>
     <script is:inline src="/blend/js/jquery.inview.js"></script>
     <script is:inline src="/blend/js/isotope.pkgd.min.js"></script>
@@ -121,12 +124,59 @@ const {
     <script is:inline src="/blend/js/jquery.sticky.js"></script>
     <script is:inline src="/blend/js/owl.carousel.min.js"></script>
     <script is:inline src="/blend/js/jquery.zflickrfeed.min.js"></script>
-    <script is:inline src="/blend/js/twitter-bootstrap-hover-dropdown.min.js"
-    ></script>
+    <script is:inline src="/blend/js/twitter-bootstrap-hover-dropdown.min.js"></script>
     <script is:inline src="/blend/js/jquery.easy-pie-chart.js"></script>
     <script is:inline src="/blend/js/classie.js"></script>
     <script is:inline src="/blend/js/search.js"></script>
     <script is:inline src="/blend/js/gizmo.js"></script>
     <script is:inline src="/blend/js/scripts.js"></script>
+
+    <!-- AOS Animation Library -->
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom Scripts -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+          offset: 100,
+          delay: 100
+        });
+
+        // Fade In Sections on Scroll
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        
+        const appearOnScroll = new IntersectionObserver(
+          function(entries, observer) {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+
+        fadeInSections.forEach(section => {
+          appearOnScroll.observe(section);
+        });
+
+        // Smooth Parallax Effect
+        window.addEventListener('scroll', function() {
+          const parallaxSections = document.querySelectorAll('.parallax-section');
+          const scrolled = window.pageYOffset;
+
+          parallaxSections.forEach(section => {
+            const speed = section.dataset.speed || 0.5;
+            const yPos = -(scrolled * speed);
+            section.style.transform = `translateY(${yPos}px)`;
+          });
+        });
+      });
+    </script>
   </body>
 </html>
