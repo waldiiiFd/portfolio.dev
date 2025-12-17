@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -11,6 +13,7 @@ export default defineConfig({
       'import.meta.env.PUBLIC_RECIPIENT_EMAIL': JSON.stringify(process.env.PUBLIC_RECIPIENT_EMAIL),
     }
   },
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'],
@@ -18,4 +21,6 @@ export default defineConfig({
       prefixDefaultLocale: true,
     }
   },
+  site: 'https://waldofernandezdev.netlify.app/en/',
+  integrations: [sitemap()],
 });
