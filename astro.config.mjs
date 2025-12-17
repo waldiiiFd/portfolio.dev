@@ -21,6 +21,6 @@ export default defineConfig({
       prefixDefaultLocale: true,
     }
   },
-  site: 'https://waldofernandezdev.netlify.app',
+  site: 'https://waldofernandezdev.netlify.app/en/',
   integrations: [sitemap()],
 });
