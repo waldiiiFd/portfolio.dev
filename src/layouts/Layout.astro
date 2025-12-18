@@ -45,6 +45,26 @@ const {
     <meta name="revisit-after" content="7 days" />
     <meta name="theme-color" content="#2196F3" />
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content={`${Astro.url.origin}/icons/letra-w.png`}
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={Astro.url.href} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta
+      property="twitter:image"
+      content={`${Astro.url.origin}/icons/letra-w.png`}
+    />
+
     <!-- Favicon -->
     <link rel="shortcut icon" href={`${Astro.url.origin}/icons/letra-w.png`} />
     <link
