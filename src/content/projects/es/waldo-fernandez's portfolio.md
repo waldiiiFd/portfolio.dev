@@ -1,7 +1,7 @@
 ---
 lang: es
 title: "Portafolio de Waldo Fernández Fariñas"
-description: "My own Software Engineer portfolio"
+description: "Mi portafolio de Ingeniero de Software"
 image: "/images/projects/waldo-fernandez's-portfolio.jpg"
 technologies:
   - "Astro"
