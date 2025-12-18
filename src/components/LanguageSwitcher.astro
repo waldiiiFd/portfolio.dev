@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname.split("/").slice(2).join("/") || "";
             href={`/${code}${currentPath ? "/" + currentPath : ""}`}
             class={code === lang ? "active" : ""}
           >
-            <span class="flag">{code === "en" ? "🇬🇧" : "🇪🇸"}</span>
+            <span class="flag">{code === "en" ? "EN" : "ES"}</span>
             {name}
           </a>
         </li>
