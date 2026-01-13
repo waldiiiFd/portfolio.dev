@@ -29,7 +29,7 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
-  site: "https://waldofernandezdev.netlify.app/en/",
+  site: "https://waldofernandezdev.netlify.app/",
   integrations: [
     sitemap({
       changefreq: "weekly",
